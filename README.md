@@ -4,10 +4,10 @@ This is a version of martin-ger's esp32_nat_router that includes support for por
 back onto the same network. Install the binary as described below. To build from scratch start
 with ESP-IDF 4.4.0 and replace the following lwip files with the files found in lwip_modified.
 
-ESP-IDF\components\lwip\lwip\src\core\ipv4\ip4.c
-ESP-IDF\components\lwip\lwip\src\core\ipv4\ip4_napt.c
-ESP-IDF\components\lwip\lwip\src\include\lwip\ip4_napt.h
-ESP-IDF\components\lwip\lwip\src\include\lwip\opt.h
+ ESP-IDF\components\lwip\lwip\src\core\ipv4\ip4.c  
+ ESP-IDF\components\lwip\lwip\src\core\ipv4\ip4_napt.c  
+ ESP-IDF\components\lwip\lwip\src\include\lwip\ip4_napt.h  
+ ESP-IDF\components\lwip\lwip\src\include\lwip\opt.h  
 
 The instructions below are from martin-ger's site (https://github.com/martin-ger/esp32_nat_router).
 
