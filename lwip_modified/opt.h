@@ -44,8 +44,8 @@
 #if !defined LWIP_HDR_OPT_H
 #define LWIP_HDR_OPT_H
 
-#define IP_FORWARD 1
-#define IP_NAPT 1
+//#define IP_FORWARD 1
+//#define IP_NAPT 1
 #define IP_FORWARD_ALLOW_TX_ON_RX_NETIF 1
 //#define NAPT_DEBUG LWIP_DBG_ON
 #define NAPT_DEBUG LWIP_DBG_OFF
@@ -2279,6 +2279,14 @@
 #define MIB2_STATS                      0
 #endif
 
+/**
+ * IP_NAPT_STATS==1: Stats for IP NAPT.
+ */
+#if !defined IP_NAPT_STATS || defined __DOXYGEN__
+#define IP_NAPT_STATS                   (IP_NAPT)
+#endif
+
+
 #else
 
 #define LINK_STATS                      0
@@ -2299,6 +2307,7 @@
 #define MLD6_STATS                      0
 #define ND6_STATS                       0
 #define MIB2_STATS                      0
+#define IP_NAPT_STATS                   0
 
 #endif /* LWIP_STATS */
 /**
@@ -2540,10 +2549,12 @@
 
 /**
  * LWIP_ICMP6_DATASIZE: bytes from original packet to send back in
- * ICMPv6 error messages.
+ * ICMPv6 error messages (0 = default of IP6_MIN_MTU_LENGTH)
+ * ATTENTION: RFC4443 section 2.4 says IP6_MIN_MTU_LENGTH is a MUST,
+ * so override this only if you absolutely have to!
  */
 #if !defined LWIP_ICMP6_DATASIZE || defined __DOXYGEN__
-#define LWIP_ICMP6_DATASIZE             8
+#define LWIP_ICMP6_DATASIZE             0
 #endif
 
 /**
@@ -3555,9 +3566,6 @@
 /**
  * NAPT_DEBUG: Enable debugging for NAPT.
  */
-//#if LWIP_DEBUG
-//#define NAPT_DEBUG                       LWIP_DBG_ON
-//#endif
 #ifndef NAPT_DEBUG
 #define NAPT_DEBUG                       LWIP_DBG_OFF
 #endif
